@@ -29,7 +29,7 @@ async function simpleApp() {
 
     await simpleWeb3.getAccount()
 
-    await simpleWeb3.getMethod(abi, 'methodName')
+    await simpleWeb3.getMethods(abi, 'methodName')
 }
 
 simpleApp()
@@ -39,11 +39,39 @@ simpleApp()
 
 ```javascript
 
-import { connect, getAllAccounts, getAccount, getMethod } from 'simple-web3'
+import { connect, getAllAccounts, getAccount, getMethods } from 'simple-web3'
 
 ``` 
 
 ### Note:
 All methods called should be Async.
 
-A smart contract ABI is only required when fetching methods from your smart contract
+A smart contract ABI is only required when getting methods from your smart contract
+
+## Get All Methods Nodejs
+
+``` javascript
+
+const simpleWeb3 = require('simple-web3')
+
+const methods = await simpleWeb3.getMethods(CONTRACT_ABI)
+
+await methods.methodName().call()
+
+// methodName is the name of your method or functionn in the smart contract
+
+```
+
+## Get All Methods ES6
+
+``` javascript
+
+import { getMethods  } from 'simple-web3'
+
+const methods = await getMethods(CONTRACT_ABI)
+
+await methods.methodName().call()
+
+// methodName is the name of your method or functionn in the smart contract
+
+```
