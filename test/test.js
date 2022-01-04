@@ -1,11 +1,16 @@
 const simpleWeb3 = require('simple-web3')
+
 const abi = {}
 
-async function run() {
+async function simpleApp() {
+
     await simpleWeb3.connect()
-    await simpleWeb3.getMethod(abi, 'methodName')
+
     await simpleWeb3.getAllAccounts()
+
     await simpleWeb3.getAccount()
+
+    await simpleWeb3.getMethod(abi, 'methodName')
 }
 
-run()
+simpleApp()

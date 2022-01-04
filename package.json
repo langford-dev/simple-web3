@@ -1,7 +1,7 @@
 {
   "name": "simple-web3",
-  "version": "1.0.4",
-  "description": "This package makes it simple for you to connect to web3 and interact with your smart contract. ",
+  "version": "1.0.6",
+  "description": "This package makes it easy to connect to web3 and interact with your smart contract.",
   "main": "index.js",
   "directories": {
     "test": "test"
