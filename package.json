@@ -1,0 +1,32 @@
+{
+  "name": "simple-web3",
+  "version": "1.0.0",
+  "description": "This package makes it simple for you to connect to web3 and interact with your smart contract. ",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/langfordquarshie21/simple-web3.git"
+  },
+  "keywords": [
+    "web3",
+    "smart-contract",
+    "blockchain",
+    "simple"
+  ],
+  "author": "Langford dev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/langfordquarshie21/simple-web3/issues"
+  },
+  "homepage": "https://github.com/langfordquarshie21/simple-web3#readme",
+  "dependencies": {
+    "simple-web3": "^1.0.0",
+    "web3": "^1.6.1"
+  }
+}
