@@ -1,8 +1,8 @@
-const test = require('simple-web3')
-
+const simpleWeb3 = require('simple-web3')
+const abi = {}
 
 async function run() {
-    console.log(await test.getAccount())
+    console.log(await simpleWeb3.getMethod(abi, 'variableName'))
 }
 
 run()
