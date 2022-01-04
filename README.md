@@ -8,7 +8,8 @@ No need to install Web3.js.
 
 ```
 const simpleWeb3 = require('simple-web3')
-const abi = {...} // A smart contract ABI is only required when fetching methods from your smart contract
+const abi = {...}
+// A smart contract ABI is only required when fetching methods from your smart contract
 
 async function simpleApp() {
     await simpleWeb3.connect()
