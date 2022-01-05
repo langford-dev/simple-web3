@@ -28,8 +28,6 @@ async function simpleApp() {
     await simpleWeb3.getAllAccounts()
 
     await simpleWeb3.getAccount()
-
-    await simpleWeb3.getMethods(abi, 'methodName')
 }
 
 simpleApp()
@@ -58,7 +56,7 @@ const methods = await simpleWeb3.getMethods(CONTRACT_ABI)
 
 await methods.methodName().call()
 
-// methodName is the name of your method or functionn in the smart contract
+// methodName is the name of your method or function in the smart contract
 
 ```
 
@@ -72,6 +70,6 @@ const methods = await getMethods(CONTRACT_ABI)
 
 await methods.methodName().call()
 
-// methodName is the name of your method or functionn in the smart contract
+// methodName is the name of your method or function in the smart contract
 
 ```
