@@ -1,101 +1,103 @@
-const web3 = require('web3')
+import Web3 from "web3"
 
-module.exports = {
-    connect: async function () {
-        try {
+const connect = async () => {
 
-            if (window.ethereum) {
-                window.web3 = new Web3(window.ethereum)
-                await window.ethereum.enable()
-            }
+    try {
 
-            else if (window.web3) window.web3 = new Web3(window.web3.currentProvider)
-            else return ("Your browser doesn't  support ethereum! 😔, Install the MetaMask chrome extension")
+        if (window.ethereum) {
 
-            return true;
+            window.web3 = new Web3(window.ethereum)
+
+            await window.ethereum.enable()
         }
 
-        catch (error) { return error.message }
-    },
+        else if (window.web3) window.web3 = new Web3(window.web3.currentProvider)
 
-    getBlochainData: async (abi) => {
+        else return {
 
-        try {
-            const status = await this.connect()
-
-            if (!status) return [false, null]
-
-            const networkId = await window.web3.eth.net.getId()
-            const networkInfo = abi.networks[networkId]
-
-            if (networkInfo) {
-                const payload = await new window.web3.eth.Contract(abi.abi, networkInfo.address)
-                return [true, payload]
-            }
-
-            else return [false, null]
-
-        } catch (error) { return [false, error.message] }
-    },
-
-    getAccount: async function () {
-        try {
-
-            await this.connect()
-
-            const web3 = window.web3
-            const accounts = await web3.eth.getAccounts()
-            return accounts[0]
-
-        } catch (error) { return error.message }
-    },
-
-    getAllAccounts: async function () {
-        try {
-
-            await this.connect()
-
-            const web3 = window.web3
-            const accounts = await web3.eth.getAccounts()
-            return accounts
-
-        } catch (error) { return error.message }
-    },
-
-    getMethod: async function (abi, name) {
-        try {
-
-            const [status, payload] = await this.getBlochainData(abi)
-
-            if (!status) return {
-                status: false,
-                error: 'Could not connect to web3',
-                payload: null
-            }
-
-            const formattedMethod = `${name + '()'}`
-
-            const data = await payload.methods.formattedMethod.call()
-
-            if (!status) return {
-                status: false,
-                error: 'Could not connect to web3',
-                payload: null
-            }
-
-            return {
-                status: true,
-                message: 'Connection successful! 🎉',
-                payload: data
-            }
-
-
-        } catch (error) {
-            return {
-                status: false,
-                error: error.message,
-                payload: null
-            }
+            status: true, message: "Your browser doesn't support ethereum! 😔, Install the MetaMask chrome extension"
         }
-    },
+
+        return { status: true, message: 'Successfully connected to web3 🎉' }
+    }
+
+    catch (error) {
+
+        return { status: false, error: error.message }
+    }
 }
+
+const getBlochainData = async (abi) => {
+
+    try {
+
+        if (!abi || typeof abi != 'object') return { status: false, error: 'Invalid ABI provided' }
+
+        const connection = await connect()
+
+        if (!connection.status) return { status: false, error: 'Could not connect to web3' }
+
+        const networkId = await window.web3.eth.net.getId()
+
+        const networkInfo = abi.networks[networkId]
+
+        if (networkInfo) {
+
+            const payload = await new window.web3.eth.Contract(abi.abi, networkInfo.address)
+
+            return { status: true, payload: payload }
+        }
+
+        else return { status: false, error: "Could not get network ID from ABI" }
+
+    } catch (error) { return { status: false, error: error.message } }
+
+}
+
+const getAccount = async () => {
+
+    try {
+
+        const connection = await connect()
+
+        if (!connection.status) return { status: false, error: 'Could not connect to web3' }
+
+        const accounts = await window.web3.eth.getAccounts()
+
+        return { status: true, payload: accounts[0] }
+
+    } catch (error) { return { status: false, error: error.message } }
+}
+
+const getAllAccounts = async () => {
+    try {
+
+        const connection = await connect()
+
+        if (!connection.status) return { status: false, error: 'Could not connect to web3' }
+
+        const accounts = await window.web3.eth.getAccounts()
+
+        return { status: true, payload: accounts }
+
+    } catch (error) { return { status: false, error: error.message } }
+}
+
+const getMethods = async (abi, name) => {
+
+    try {
+
+        if (!abi || typeof abi != 'object') return { status: false, error: 'Invalid ABI provided' }
+
+        const data = await getBlochainData(abi)
+
+        if (!data.status) return { status: false, error: 'Could not fetch data from blockchain. Check your ABI' }
+
+        const methods = await data.payload.methods
+
+        return methods
+
+    } catch (error) { return { status: false, error: error.message } }
+}
+
+export { getBlochainData, connect, getAccount, getAllAccounts, getMethods }
