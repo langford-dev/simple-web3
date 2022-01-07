@@ -13,15 +13,28 @@ No need to install Web3.js.
 
 ```yarn add simple-web3```
 
+
+## Importing simple-web3
+
+``` javascript
+
+    const simpleWeb3 = require('simple-web3')
+    
+    // ES6
+    import { getMethods  } from 'simple-web3'
+
+```
+
+
 ## Nodejs Usage
 
 ```javascript
 
-const simpleWeb3 = require('simple-web3')
+import { connect, getAllAccounts, getAccount  } from 'simple-web3'
 
-const abi = {...}
+const ABI = {...}
 
-async function simpleApp() {
+async function main() {
 
     await simpleWeb3.connect()
 
@@ -30,35 +43,17 @@ async function simpleApp() {
     await simpleWeb3.getAccount()
 }
 
-simpleApp()
-``` 
-
-## ES6 Usage
-
-```javascript
-
-import { connect, getAllAccounts, getAccount, getMethods } from 'simple-web3'
-
-``` 
-
-### Note:
-All methods called should be Async.
-
-A smart contract ABI is only required when getting methods from your smart contract
-
-## Get All Methods Nodejs
-
-``` javascript
-
-const simpleWeb3 = require('simple-web3')
-
-const methods = await simpleWeb3.getMethods(CONTRACT_ABI)
-
-await methods.methodName().call()
-
-// methodName is the name of your method or function in the smart contract
+main()
 
 ```
+
+
+### Note:
+
+- All methods called should be Async.
+
+- A smart contract ABI is only ** required ** when interacting with your smart contract
+
 
 ## Get All Methods ES6
 
@@ -66,9 +61,14 @@ await methods.methodName().call()
 
 import { getMethods  } from 'simple-web3'
 
-const methods = await getMethods(CONTRACT_ABI)
+const ABI = {...}
 
-await methods.methodName().call()
+async function main() {
+
+    const methods = await getMethods(ABI)
+
+    await methods.methodName().call()
+}
 
 // methodName is the name of your method or function in the smart contract
 
