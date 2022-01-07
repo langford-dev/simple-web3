@@ -52,7 +52,7 @@ main()
 
 - All methods called should be Async.
 
-- A smart contract ABI is only required when interacting with your smart contract
+- A smart contract ABI is only **required** when **interacting** with your **smart contract**
 
 
 ## Get smart contract methods ES6
