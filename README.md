@@ -21,7 +21,7 @@ No need to install Web3.js.
     const simpleWeb3 = require('simple-web3')
     
     // ES6
-    import { getMethods  } from 'simple-web3'
+    import { connect, getAllAccounts, getAccount, getMethods  } from 'simple-web3'
 
 ```
 
@@ -52,10 +52,10 @@ main()
 
 - All methods called should be Async.
 
-- A smart contract ABI is only ** required ** when interacting with your smart contract
+- A smart contract ABI is only required when interacting with your smart contract
 
 
-## Get All Methods ES6
+## Get smart contract methods ES6
 
 ``` javascript
 
