@@ -1,8 +1,8 @@
 # Simple web3
 
-This package makes it **easy** to connect to web3 and interact with your smart contract on the blockchain
+This package makes it **easy** to connect to web3 throught the MetaMask extension and interact with your smart contract on the blockchain.
 
-No need to install Web3.js.
+No need to install Web3.js. It already comes with web3.js preinstalled.
 
 
 ## NPM installation
@@ -36,11 +36,11 @@ const ABI = {...}
 
 async function main() {
 
-    await simpleWeb3.connect() // connect to web3 through MetaMask
+    await connect() // connect to web3 through MetaMask
 
-    await simpleWeb3.getAllAccounts() // get all wallet addresses
+    let accounts = await getAllAccounts() // get all wallet addresses
 
-    await simpleWeb3.getAccount() // get first wallet address
+    let account = await getAccount() // get first wallet address
 }
 
 main()
