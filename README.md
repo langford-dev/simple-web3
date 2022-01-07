@@ -5,6 +5,9 @@ This package makes it **easy** to connect to web3 through the MetaMask extension
 No need to install Web3.js. It already comes with web3.js preinstalled.
 
 
+<a href="https://www.buymeacoffee.com/langford.dev" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"><a>
+
+
 ## NPM installation
 
 ```npm i simple-web3```
