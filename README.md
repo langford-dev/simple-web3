@@ -36,11 +36,11 @@ const ABI = {...}
 
 async function main() {
 
-    await simpleWeb3.connect()
+    await simpleWeb3.connect() // connect to web3 through MetaMask
 
-    await simpleWeb3.getAllAccounts()
+    await simpleWeb3.getAllAccounts() // get all wallet addresses
 
-    await simpleWeb3.getAccount()
+    await simpleWeb3.getAccount() // get first wallet address
 }
 
 main()
