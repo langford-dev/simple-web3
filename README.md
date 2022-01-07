@@ -26,7 +26,7 @@ No need to install Web3.js.
 ```
 
 
-## Nodejs Usage
+## Usage
 
 ```javascript
 
