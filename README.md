@@ -1,6 +1,6 @@
 # Simple web3
 
-This package makes it **easy** to connect to web3 throught the MetaMask extension and interact with your smart contract on the blockchain.
+This package makes it **easy** to connect to web3 through the MetaMask extension and interact with your smart contract on the blockchain.
 
 No need to install Web3.js. It already comes with web3.js preinstalled.
 
@@ -73,3 +73,5 @@ async function main() {
 // methodName is the name of your method or function in the smart contract
 
 ```
+
+%[https://www.buymeacoffee.com/langford.dev]
