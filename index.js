@@ -95,7 +95,7 @@ const getAllAccounts = async () => {
     }
 }
 
-const getMethods = async (abi, name) => {
+const getMethods = async (abi) => {
 
     try {
 
