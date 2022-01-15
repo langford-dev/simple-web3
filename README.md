@@ -2,7 +2,11 @@
 
 This package makes it **easy** to connect to web3 through the MetaMask extension and interact with your smart contract on the blockchain.
 
-No need to install Web3.js. It already comes with web3.js preinstalled.
+Under the hood, simple-web3 handles all the client-side checks you have to make when using some of the native web3.js APIs.
+
+You can use the web3.js library together with simple-web3
+
+No need to install Web3.js. It already comes with it preinstalled.
 
 
 <a href="https://www.buymeacoffee.com/langford.dev" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"><a>

@@ -11,8 +11,13 @@ const connect = async () => {
 
         else if (window.web3) window.web3 = new Web3(window.web3.currentProvider)
 
-        else return {
-            status: true, message: "Your browser doesn't support ethereum! 😔, Install the MetaMask chrome extension"
+        else {
+
+            alert("Your browser doesn't support ethereum! 😔, Install the MetaMask chrome extension")
+
+            return {
+                status: true, message: "Your browser doesn't support ethereum! 😔, Install the MetaMask chrome extension"
+            }
         }
 
         return { status: true, message: 'Successfully connected to web3 🎉' }
