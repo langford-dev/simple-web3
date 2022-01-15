@@ -5,6 +5,7 @@ const connect = async () => {
     try {
 
         if (window.ethereum) {
+
             window.web3 = new Web3(window.ethereum)
             await window.ethereum.enable()
         }
@@ -12,9 +13,11 @@ const connect = async () => {
         else if (window.web3) window.web3 = new Web3(window.web3.currentProvider)
 
         else {
+
             alert("Your browser doesn't support ethereum 😔, Install the MetaMask extension")
             return {
-                status: false, message: "Your browser doesn't support ethereum! 😔, Install the MetaMask extension"
+                status: false,
+                error: "Your browser doesn't support ethereum 😔, Install the MetaMask extension"
             }
         }
 
@@ -30,16 +33,21 @@ const getBlochainData = async (abi) => {
 
     try {
 
-        if (!abi || typeof abi != 'object') return {
-            status: false, error: 'Invalid ABI provided'
+        if (!abi || typeof abi != 'object') {
+
+            return {
+                status: false,
+                error: 'Invalid ABI provided'
+            }
         }
 
         const connection = await connect()
 
         if (!connection.status) {
-            alert(connection.error)
+
             return {
-                status: false, message: connection.error
+                status: false,
+                error: connection.error
             }
         }
 
@@ -48,7 +56,8 @@ const getBlochainData = async (abi) => {
 
         if (networkInfo) {
             const payload = await new window.web3.eth.Contract(abi.default.abi, networkInfo.address)
-            return { status: true, payload: payload }
+
+            return payload
         }
 
         else return {
@@ -69,16 +78,17 @@ const getAccount = async () => {
         const connection = await connect()
 
         if (!connection.status) {
-            alert(connection.error)
+
             return {
                 status: false, message: connection.error
             }
         }
 
         const accounts = await window.web3.eth.getAccounts()
-        return { status: true, payload: accounts[0] }
+        return accounts[0]
 
     } catch (error) {
+
         console.log(error.message)
         return { status: false, error: error.message }
     }
@@ -91,7 +101,7 @@ const getAllAccounts = async () => {
         const connection = await connect()
 
         if (!connection.status) {
-            alert(connection.error)
+
             return {
                 status: false, message: connection.error
             }
@@ -99,9 +109,10 @@ const getAllAccounts = async () => {
 
         const accounts = await window.web3.eth.getAccounts()
 
-        return { status: true, payload: accounts }
+        return accounts
 
     } catch (error) {
+
         console.log(error.message)
         return { status: false, error: error.message }
     }
@@ -114,14 +125,18 @@ const getMethods = async (abi) => {
         const data = await getBlochainData(abi)
 
         if (!data.status) {
-            console.log(data.error)
-            return { status: false, error: data.error }
+
+            return {
+                status: false,
+                error: data.error
+            }
         }
 
         const methods = await data.payload.methods
         return methods
 
     } catch (error) {
+
         console.log(error.message)
         return { status: false, error: error.message }
     }
