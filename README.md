@@ -6,7 +6,7 @@ Under the hood, simple-web3 handles all the client-side checks you have to make 
 
 You can use the web3.js library together with simple-web3
 
-No need to install Web3.js. It already comes with it preinstalled.
+Installing simple-web3 auto installs the web3 library
 
 
 <a href="https://www.buymeacoffee.com/langford.dev" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"><a>
@@ -45,9 +45,9 @@ async function main() {
 
     await connect() // connect to web3 through MetaMask
 
-    let accounts = await getAllAccounts() // get all wallet addresses
+    let accounts = await getAllAccounts() // get all wallet addresses - ['0xdef', '0x123', '0xabc']
 
-    let account = await getAccount() // get first wallet address
+    let account = await getAccount() // get first wallet address - 0xb579Dc2d276c6a64A2F654f63209aCdB157c1e61
 }
 
 main()
@@ -77,7 +77,7 @@ async function main() {
     await methods.methodName().call()
 }
 
-// methodName is the name of your method or function in the smart contract
+// methodName is the name of your variable or function in the smart contract
 
 ```
 
