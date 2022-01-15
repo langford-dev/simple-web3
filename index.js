@@ -12,9 +12,7 @@ const connect = async () => {
         else if (window.web3) window.web3 = new Web3(window.web3.currentProvider)
 
         else {
-
             alert("Your browser doesn't support ethereum! 😔, Install the MetaMask chrome extension")
-
             return {
                 status: true, message: "Your browser doesn't support ethereum! 😔, Install the MetaMask chrome extension"
             }
@@ -35,7 +33,11 @@ const getBlochainData = async (abi) => {
         if (!abi || typeof abi != 'object') return { status: false, error: 'Invalid ABI provided' }
 
         const connection = await connect()
-        if (!connection.status) return { status: false, error: 'Could not connect to web3' }
+
+        if (!connection.status) {
+            alert('Could not connect to web3')
+            return { status: false, error: 'Could not connect to web3' }
+        }
 
         const networkId = await window.web3.eth.net.getId()
         const networkInfo = abi.networks[networkId]
