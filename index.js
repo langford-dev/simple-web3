@@ -62,7 +62,11 @@ const getAccount = async () => {
     try {
 
         const connection = await connect()
-        if (!connection.status) return { status: false, error: 'Could not connect to web3' }
+
+        if (!connection.status) {
+            alert('Could not connect to web3')
+            return { status: false, error: 'Could not connect to web3' }
+        }
 
         const accounts = await window.web3.eth.getAccounts()
         return { status: true, payload: accounts[0] }
@@ -77,7 +81,11 @@ const getAllAccounts = async () => {
 
         const connection = await connect()
 
-        if (!connection.status) return { status: false, error: 'Could not connect to web3' }
+        if (!connection.status) {
+            alert('Could not connect to web3')
+            return { status: false, error: 'Could not connect to web3' }
+        }
+
         const accounts = await window.web3.eth.getAccounts()
 
         return { status: true, payload: accounts }
