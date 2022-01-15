@@ -55,8 +55,8 @@ const getBlochainData = async (abi) => {
         const networkInfo = abi.default.networks[networkId]
 
         if (networkInfo) {
-            const payload = await new window.web3.eth.Contract(abi.default.abi, networkInfo.address)
 
+            const payload = await new window.web3.eth.Contract(abi.default.abi, networkInfo.address)
             return payload
         }
 
