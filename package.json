@@ -27,6 +27,6 @@
   "homepage": "https://github.com/langfordquarshie21/simple-web3#readme",
   "dependencies": {
     "simple-web3": "^1.0.0",
-    "web3": "^1.6.1"
+    "web3": "^1.7.1"
   }
 }
